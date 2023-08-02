@@ -19,5 +19,5 @@ let cardInfo = {
 ```
 
 #### Preview
-
+.
 ![Article Card](./assets/card.jpg)
