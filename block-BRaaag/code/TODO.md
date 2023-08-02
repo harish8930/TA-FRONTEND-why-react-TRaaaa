@@ -1,6 +1,6 @@
 #### Movie App with JSX
 
-- Copy the code from previous exercise
+- Copy the code from previous exercise.
 - Refactor it to use `JSX` using babel
 - Use the links given below for babel
 - Make sure to follow the example for writing JSX
