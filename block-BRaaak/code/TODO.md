@@ -1,6 +1,6 @@
 #### Create Multiple Cards Using JSX
 
-- Create a collection of cards using JSX
+- Create a collection of cards using JSX.
 - Create a component named `Article` which will get access to props and create the individual article UI.
 - You also need to create another component named `Articles` that will loop over the data given below and for each article return `Article` component.
 - While using map you will also pass `props` to each individual `Article` component
