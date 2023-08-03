@@ -19,99 +19,66 @@ CDN url for React and ReactDOM.
   src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
 ></script>
 ```
-function elm(type, attr = {}, ...children){
-let element = document.createElement(type);
-for(let key in attr){
-    if(key.startsWith("data-")){
-        element.setAttribute(key,attr[key]);
-    }else{
-        element[key] = attr[key]
-    }
-}
-children.forEach((child)=>{
-    if(typeof child === "object"){
-        element.append(child);
-    }if(typeof child === "string"){
-        let node = document.createTextNode(child);
-        element.append(node);
-    }
-})
-return element;
-}
+let input = document.querySelector("input");
+let rootElm = document.querySelector(".movieList");
 
-
-
-
-
-
-let input = document.querySelector(`input[type="text"]`);
-let rootElm = document.querySelector(".movieList")
-
-let allmovies = [{
-name: "forest Gump",
+let allmovies = [
+  {
+name : "Forest Gump",
 watched: false,
 },
-
 {
-name: "Inception",
-watched: false,
+name : "Inception",
+watched: true,
 }
-
-
 ]
 
 input.addEventListener("keyup",(event)=>{
-  if(event.keyCode === 13){
-    allmovies.push({
-      name: event.target.value,
-      watched: false,
-    });
-    createUi();
-     // Clear the input field after adding a movie
-  }
-});
-
-
-
-
-function handledelete(event){
-let id = event.target.dataset.id;
-allmovies.splice(id,1)
-createUi();
-}
-
-function handlechange(event){
-    let id = event.target.id;
-    allmovies[id].watched = !allmovies[id].watched
-}
-
-function createUi(){
-rootElm.innerHTML = ""; 
-  allmovies.forEach((movie,i) =>{
-let li = elm("li",
-{},
-elm("input",
-{
-type: "checkBox",
-className: styled-checkBox,
-"data-id": i,
-checked: movie.watched
-}),
-elm("label",{
-for: i,
-ineerText: movie.name
-}),
-elm("span",{
-    
-},"X")
-
-)
-
-span.addEventListener("click",handledelete);
-span.setAttribute("data-id",i)
-rootElm.append(li)
+if(event.keyCode === 13){
+  allmovies.push({
+    name: event.target.value,
+    watched: false,
   });
+  event.target.value = "";
+  createUi(allmovies,rootElm)
+}
+})
+
+
+
+function handleChange(event){
+let id = event.target.id;
+
+allmovies[id].watched = !allmovies[id].watched
+createUi(allmovies,rootElm)
 
 }
 
-createUi();
+function createUi(data,root){
+let ui = data.map((movie,i) => {
+    return React.createElement('li',
+    null,    
+   React.createElement('label',
+   {for: i},
+ movie.name),
+  React.createElement('button',{ id: i, onClick: handleChange},
+  movie.watched ? 'Watched' : 'To Watch'
+  
+  )
+  )
+
+});
+ReactDOM.render(ui,root);
+}
+
+createUi(allmovies,rootElm);
+
+
+
+
+
+
+
+
+
+
