@@ -7,4 +7,4 @@
 
 ### Preview
 
-![Color Pallet](./colors.png)
+![Color Pallet](./colors.png).
