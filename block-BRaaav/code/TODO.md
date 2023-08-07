@@ -1,6 +1,6 @@
 #### Convert Static HTML to React
 
-- You have been given a static HTML/CSS website
+- You have been given a static HTML/CSS website.
 - Open `index.html` to look at the UI
 - Create the React boilerplate in this folder
 - Convert the website into React
